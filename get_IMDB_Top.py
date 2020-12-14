@@ -13,8 +13,10 @@ def getTopList():
 def getTopOver(rating):
     top_movies = getTopList()
     top_rating = soup.find_all('td', attrs={'class': 'ratingColumn imdbRating'})
-    for movie in top_rating:
-        print(movie.find('strong').string)
+    for num, movie in enumerate(top_rating, start=1):
+        if (float(movie.find('strong').string) >= rating):
+            print(movie.find('strong').string)
+            print(num)
 
 
 
@@ -23,4 +25,4 @@ if __name__ == "__main__":
     #TopMovies = getTopList()
     #for movie in TopMovies:
     #    print(movie.find('a').string)
-    getTopOver(1)
+    getTopOver(9)
