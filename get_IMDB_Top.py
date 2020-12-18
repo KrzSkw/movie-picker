@@ -19,6 +19,10 @@ def getTopOver(rating):
             top_movies_over.append(top_movies[num].find('a').string)
     return top_movies_over
 
+#this function returns only movies from TOP250 that were poduced later than minYear and before maxYear
+def getTopByDate(minYear, maxYear):
+    pass
+
 
 if __name__ == "__main__":
     TopMovies = getTopList()
