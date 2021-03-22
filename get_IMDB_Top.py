@@ -21,12 +21,24 @@ def getTopOver(rating):
 
 #this function returns only movies from TOP250 that were poduced later than minYear and before maxYear
 def getTopByDate(minYear, maxYear):
-    pass
+    top_movies = getTopList()
+    top_year = soup.find_all('', attrs={'class': 'secondaryInfo'})
+    top_movies_year = [],[]
+    for num, year in enumerate(top_year, start=0):
+        if (int(year.text[1:-1]) >= minYear and int(year.text[1:-1]) <= maxYear):
+            top_movies_year[0].append(top_movies[num].find('a').string)
+            top_movies_year[1].append(year.text[1:-1])
+    return top_movies_year
+    
 
 
 if __name__ == "__main__":
-    TopMovies = getTopList()
-    for movie in TopMovies:
-        print(movie.find('a').string)
-    topOver = getTopOver(8.8)
-    print(topOver)
+    ### Just some testing calls and prints ###
+    # TopMovies = getTopList()
+    # for movie in TopMovies:
+    #     print(movie.find('a').string)
+    #topOver = getTopOver(8.8)
+    #print(topOver)
+    #top_years = getTopByDate(1995,1998)
+    #print(top_years)
+
